@@ -9,16 +9,13 @@ connectDB();
 
 const app = express();
 
-app.get('/test', (req, res) => {
-  res.send('Test route works!');
-});
-
-
 app.use(express.json());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/categories', require('./routes/categoryRoutes'));
 app.use('/api/posts', require('./routes/postRoutes'));
+app.use('/api/comments', require('./routes/commentRoutes'));
 
 // Middleware protect test
 const { protect } = require('./middleware/authMiddleware');
